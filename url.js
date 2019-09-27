@@ -1,4 +1,4 @@
-(funcion (global, factory) {
+(function (global, factory) {
     'use strict'
     if (typeof module === 'object' && typeof module.exports === 'object') {
         module.exports = global.document ?
@@ -57,11 +57,11 @@ function stringifyUrlParams(query) {
 }
 
 
-function carete(url) {
+function create(url) {
     let len = arguments.length,
         pos = url.indexOf('?'),
         query = parseUrlParams(url)
-    for(let i = 0; i < len; i++) {
+    for(let i = 1; i < len; i++) {
         let arg = arguments[i]
         for( let key in arg) {
             query[key] = arg[key]
@@ -88,4 +88,4 @@ if (!noGlobal) {
     window.url = url
 }
 
-}))
+})
