@@ -70,12 +70,22 @@ function carete(url) {
     return (-1 === pos ? url : url.substring(0, pos)) + '?' + stringifyUrlParams(query)
 }
 
-return {
+let url = {
     query: {
         parse: parseUrlParams,
         stringify: stringifyUrlParams
     },
     create: create
+}
+
+if (typeof define === 'function' && define.amd) {
+    define('url', [], function() {
+        return url
+    })
+}
+
+if (!noGlobal) {
+    window.url = url
 }
 
 }))
